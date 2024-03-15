@@ -4,12 +4,21 @@ int main(){
 	int n,a;
 	cin >> n;
 	vector<int> temp;
+	while(cin >> a) temp.push_back(a);
+	int maxi = 0;
+	int mini = 0;
 	int max = 0;
-	while(cin >> a){
-		temp.push_back(a);
-		if(a > max) max = a;
+	int min = temp[0];
+	for(int i = 1;i <= n;i++){
+		if(temp[i] > max) {
+			max = temp[i];
+			maxi = i;
+		}
+		if(temp[i] < min){
+			min = temp[i];
+			mini = i;
+		}
 	}
-	int min = max;
-	for(auto x:temp) if (x < min) min = x;
-	
+	if(maxi > mini) cout << (maxi - 1) + (n - mini)-1 << endl;
+	else cout << (maxi-1) + (n - mini) << endl;
 }
